@@ -12,7 +12,7 @@ namespace DertOrtagim.DataAccess.Concrete.EntityFramework.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.;Database=DERTORTAGIMDB;Trusted_Connection=false;User Id=dertortagim;Password=dertortagim123");
+            optionsBuilder.UseSqlServer(@"Server=.;Database=DERTORTAGIMDB;Trusted_Connection=false;User Id=furkan;Password=Start!2021");
         }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }

@@ -1,8 +1,11 @@
+using Autofac;
 using Core.DependencyResolvers;
 using Core.Extensions;
 using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
+using DertOrtagim.Business.DependencyResolvers.Autofac;
+using DertOrtagim.WebAPI.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,7 +36,7 @@ namespace DertOrtagim.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            /*var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -52,16 +55,18 @@ namespace DertOrtagim.WebAPI
 
             services.AddDependencyResolvers(new ICoreModule[] {
                new CoreModule()
-            });*/
+            });
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new AutofacBusinessModule());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseExceptionWrapperMiddleware();
 
             app.UseHttpsRedirection();
 

@@ -1,5 +1,6 @@
 ﻿using Core.DataAccess;
 using Core.DataAccess.EntityFramework;
+using DertOrtagim.DataAccess.Abstract;
 using DertOrtagim.DataAccess.Concrete.EntityFramework.Contexts;
 using DertOrtagim.Entities.DBModels;
 using System;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace DertOrtagim.DataAccess.Concrete.EntityFramework
 {
-    public class EfCommentDal : EfEntityRepositoryBase<Comment,DertOrtagimDBContext>,IEntityRepository<Comment>
+    public class EfCommentDal : EfEntityRepositoryBase<Comment,DertOrtagimDBContext>, ICommentDal
     {
     }
 }

@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.20" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\DertOrtagim.Business\DertOrtagim.Business.csproj" />
     <ProjectReference Include="..\DertOrtagim.Entities\DertOrtagim.Entities.csproj" />
   </ItemGroup>
 

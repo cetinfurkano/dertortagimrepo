@@ -27,7 +27,7 @@ namespace DertOrtagim.Business.Managers
 
         public User GetByMail(string email)
         {
-            var result = _userDal.Get(u=>u.EMail == email);
+            var result = _userDal.Get(u => u.EMail == email);
             return result;
         }
 
@@ -35,6 +35,13 @@ namespace DertOrtagim.Business.Managers
         {
             var result = _userDal.Get(u => u.UserName == userName);
             return result;
+        }
+
+        public bool UserExists(string email, string userName)
+        {
+            var result = _userDal.Get(u =>u.UserName.Equals(userName) || u.EMail.Equals(email));
+            
+            return result != null;
         }
 
         public User GetUserById(int userId)

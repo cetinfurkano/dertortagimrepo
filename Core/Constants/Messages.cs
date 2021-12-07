@@ -13,5 +13,6 @@ namespace Core.Constants
         public const string TokenWasCreated = "Token was created.";
         public const string UserHasAlreadyExists = "This user has already exists.";
         public const string WrongPassword = "Password is wrong.";
+        public const string InternalServerError = "Internal server error occured!";
     }
 }

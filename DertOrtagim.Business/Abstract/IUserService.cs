@@ -13,5 +13,6 @@ namespace DertOrtagim.Business.Abstract
         User GetUserById(int userId);
         User GetByUserName(string userName);
         IDataResult<int> GetUserIdByUserName(string userName);
+        bool UserExists(string email, string userName);
     }
 }

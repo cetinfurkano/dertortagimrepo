@@ -29,16 +29,16 @@ namespace DertOrtagim.Business.Managers
             HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
             var user = new User
             {
-                EMail=userForRegisterDto.EMail,
-                UserName=userForRegisterDto.UserName,
-                //FirstName=userForRegisterDto.FirstName,
-                //LastName = userForRegisterDto.LastName,
-                //DateOfBirth = userForRegisterDto.DateOfBirth,
-                //Sex=userForRegisterDto.Sex,
-                PasswordHash=passwordHash,
-                PasswordSalt=passwordSalt
+                EMail = userForRegisterDto.EMail,
+                UserName = userForRegisterDto.UserName,
+                FirstName = userForRegisterDto.FirstName,
+                LastName = userForRegisterDto.LastName,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt
             };
+
             _userService.Add(user);
+
             return new SuccessDataResult<User>(user, Messages.Success);
         }
 
@@ -58,9 +58,10 @@ namespace DertOrtagim.Business.Managers
             return new SuccessDataResult<User>(userToCheck, Messages.Success);
         }
 
-        public IResult UserExists(string email)
+        public IResult UserExists(string email, string userName)
         {
-            if (_userService.GetByMail(email) != null)
+            var userExists = _userService.UserExists(email, userName);
+            if (userExists)
             {
                 return new ErrorResult(Messages.UserHasAlreadyExists);
             }

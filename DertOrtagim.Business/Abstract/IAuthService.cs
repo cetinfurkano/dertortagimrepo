@@ -13,7 +13,7 @@ namespace DertOrtagim.Business.Abstract
     {
         IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password);
         IDataResult<User> Login(UserForLoginDto userForLoginDto);
-        IResult UserExists(string email);
+        IResult UserExists(string email, string userName);
         IDataResult<AccessToken> CreateAccessToken(User user);
     }
 }
