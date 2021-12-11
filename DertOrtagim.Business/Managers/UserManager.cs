@@ -74,7 +74,8 @@ namespace DertOrtagim.Business.Managers
                 UserId = updatedUser.Id,
                 EMail = updatedUser.EMail,
                 FirstName = updatedUser.FirstName,
-                LastName = updatedUser.LastName
+                LastName = updatedUser.LastName,
+                ProfilePicture = updatedUser.ProfilePicture
             };
 
 
@@ -95,6 +96,28 @@ namespace DertOrtagim.Business.Managers
             _userDal.Update(user);
 
             return new SuccessResult(Messages.Success);
+        }
+
+        public IDataResult<UserForReturnDto> ChangeProfilePicture(int userId, string picture)
+        {
+            var user = _userDal.Get(u => u.Id == userId);
+
+            user.ProfilePicture = picture;
+
+            var updatedUser = _userDal.Update(user);
+
+            var result = new UserForReturnDto
+            {
+                ProfilePicture = updatedUser.ProfilePicture,
+                EMail = updatedUser.EMail,
+                FirstName = updatedUser.FirstName,
+                LastName = updatedUser.LastName,
+                UserId = updatedUser.Id,
+                UserName = updatedUser.UserName
+            };
+
+            return new SuccessDataResult<UserForReturnDto>(result,Messages.Success);
+
         }
     }
 }

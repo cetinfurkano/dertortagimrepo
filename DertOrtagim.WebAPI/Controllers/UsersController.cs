@@ -61,6 +61,25 @@ namespace DertOrtagim.WebAPI.Controllers
             return Ok(result);
         }
 
+        [Authorize]
+        [HttpPut("picture")]
+        public IActionResult UploadProfilePicture([FromBody] ProfilePictureDto profilePictureDto)
+        {
+            if (!CheckUserIsLogin(profilePictureDto.UserId))
+            {
+                return Unauthorized(Messages.AuthorizationDenied);
+            }
+
+            var updatedUser = _userService.ChangeProfilePicture(profilePictureDto.UserId, profilePictureDto.ProfilePicture);
+
+            if (!updatedUser.Success)
+            {
+                return BadRequest(updatedUser);
+            }
+
+            return Ok(updatedUser);
+        }
+
 
         private bool CheckUserIsLogin(int userId)
         {

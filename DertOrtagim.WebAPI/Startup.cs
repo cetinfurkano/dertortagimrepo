@@ -67,7 +67,24 @@ namespace DertOrtagim.WebAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseExceptionWrapperMiddleware();
- 
+
+            if (env.IsDevelopment())
+            {
+                app.UseCors(opts =>
+                {
+                    opts.WithOrigins(new string[]
+                    {
+                        "https://localhost:5001",
+                        "http://localhost:5000",
+                        "http://localhost:52234"   
+                    });
+
+                    opts.AllowAnyHeader();
+                    opts.AllowAnyMethod();
+                    opts.AllowCredentials();
+                });
+            }
+
             app.UseAuthentication();
 
             app.UseHttpsRedirection();

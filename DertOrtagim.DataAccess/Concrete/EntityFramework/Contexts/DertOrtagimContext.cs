@@ -20,7 +20,6 @@ namespace DertOrtagim.DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<Like> Likes { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<ProfilePicture> ProfilePictures { get; set; }
         public DbSet<User> Users { get; set; }
 
          

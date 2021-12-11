@@ -16,12 +16,11 @@ namespace DertOrtagim.Business.Managers
     {
         private IPostDal _postDal;
         private ILikeService _likeService;
-        private IProfilePictureService _profilePictureService;
-        public PostManager(IPostDal postDal, ILikeService likeService, IProfilePictureService profilePictureService)
+        public PostManager(IPostDal postDal, ILikeService likeService)
         {
             _postDal = postDal;
             _likeService = likeService;
-            _profilePictureService = profilePictureService;
+            
         }
 
         public IResult AddPost(Post post)

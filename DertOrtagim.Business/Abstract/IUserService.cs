@@ -18,6 +18,8 @@ namespace DertOrtagim.Business.Abstract
         IDataResult<UserForReturnDto> UpdateUser(UserForUpdateDto user);
         IResult ChangePassword(string password, int userId);
 
+        IDataResult<UserForReturnDto> ChangeProfilePicture(int userId, string picture);
+
 
     }
 }
