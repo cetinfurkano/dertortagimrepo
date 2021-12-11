@@ -22,7 +22,7 @@ namespace DertOrtagim.WebAPI.Controllers
         {
             _userService = userService;
         }
-
+          
         [Authorize]
         [HttpPut]
         public IActionResult UpdateProfile([FromBody] UserForUpdateDto userForUpdateDto)
