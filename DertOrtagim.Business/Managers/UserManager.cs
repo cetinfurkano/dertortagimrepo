@@ -2,8 +2,10 @@
 using Core.Entities.SecurityModels;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
+using Core.Utilities.Security.Hashing;
 using DertOrtagim.Business.Abstract;
 using DertOrtagim.DataAccess.Abstract;
+using DertOrtagim.Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -53,6 +55,46 @@ namespace DertOrtagim.Business.Managers
         public IDataResult<int> GetUserIdByUserName(string userName)
         {
             throw new NotImplementedException();
+        }
+
+        public IDataResult<UserForReturnDto> UpdateUser(UserForUpdateDto userForUpdateDto)
+        {
+            var user = _userDal.Get(u => u.Id == userForUpdateDto.UserId);
+
+            user.FirstName = userForUpdateDto.FirstName;
+            user.LastName = userForUpdateDto.LastName;
+            user.EMail = userForUpdateDto.EMail;
+            user.UserName = userForUpdateDto.UserName;
+
+           var updatedUser =  _userDal.Update(user);
+
+            var result = new UserForReturnDto
+            {
+                UserName = updatedUser.UserName,
+                UserId = updatedUser.Id,
+                EMail = updatedUser.EMail,
+                FirstName = updatedUser.FirstName,
+                LastName = updatedUser.LastName
+            };
+
+
+            return new SuccessDataResult<UserForReturnDto>(result, Messages.Success);
+        }
+
+        public IResult ChangePassword(string password, int userId)
+        {
+            byte[] passwordHash, passwordSalt;
+
+            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+            var user = _userDal.Get(u => u.Id == userId);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            _userDal.Update(user);
+
+            return new SuccessResult(Messages.Success);
         }
     }
 }

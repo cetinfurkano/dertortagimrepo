@@ -73,5 +73,7 @@ namespace DertOrtagim.Business.Managers
             var accessToken = _tokenHelper.CreateToken(user, null);
             return new SuccessDataResult<AccessToken>(accessToken, Messages.TokenWasCreated);
         }
+
+        
     }
 }

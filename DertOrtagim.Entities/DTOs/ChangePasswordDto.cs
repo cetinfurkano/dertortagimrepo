@@ -4,11 +4,9 @@ using System.Text;
 
 namespace DertOrtagim.Entities.DTOs
 {
-    public class CommentForAddDto
+    public class ChangePasswordDto
     {
+        public string Password { get; set; }
         public int UserId { get; set; }
-        public int PostId { get; set; }
-        public string Text { get; set; }
-        public DateTime Date { get; set; }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Core.Entities.SecurityModels;
 using DertOrtagim.Entities.DBModels;
+using DertOrtagim.Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Text;
 
 namespace DertOrtagim.DataAccess.Concrete.EntityFramework.Contexts
@@ -18,9 +20,9 @@ namespace DertOrtagim.DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<Like> Likes { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
         public DbSet<ProfilePicture> ProfilePictures { get; set; }
         public DbSet<User> Users { get; set; }
 
+         
     }
 }

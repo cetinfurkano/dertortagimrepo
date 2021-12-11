@@ -7,7 +7,7 @@ namespace DertOrtagim.Business.Abstract
     public interface ILikeService
     {
         IResult AddLike(Like like);
-        IResult RemoveLike(int postId);
+        IResult RemoveLike(Like like);
         IDataResult<int> GetLikeCountByPostId(int postId);
         IDataResult<LikeForReturnDto> GetLikedUsersByPostId(int postId);
     }

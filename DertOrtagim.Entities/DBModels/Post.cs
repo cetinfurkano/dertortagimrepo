@@ -9,6 +9,8 @@ namespace DertOrtagim.Entities.DBModels
         public int UserId { get; set; }
         public string Text { get; set; }
         public DateTime Date { get; set; }
+        public bool IsDeleted { get; set; }
+
     }
-   
+
 }

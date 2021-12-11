@@ -48,7 +48,6 @@ namespace DertOrtagim.Business.DependencyResolvers.Autofac
             builder.RegisterType<EfLikeDal>().As<ILikeDal>().SingleInstance();
             builder.RegisterType<EfMessageDal>().As<IMessageDal>().SingleInstance();
             builder.RegisterType<EfPostDal>().As<IPostDal>().SingleInstance();
-            builder.RegisterType<EfProfileDal>().As<IProfileDal>().SingleInstance();
             builder.RegisterType<EfProfilePictureDal>().As<IProfilePictureDal>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 
@@ -61,7 +60,6 @@ namespace DertOrtagim.Business.DependencyResolvers.Autofac
             builder.RegisterType<LikeManager>().As<ILikeService>().SingleInstance();
             builder.RegisterType<MessageManager>().As<IMessageService>().SingleInstance();
             builder.RegisterType<PostManager>().As<IPostService>().SingleInstance();
-            builder.RegisterType<ProfileManager>().As<IProfileService>().SingleInstance();
             builder.RegisterType<ProfilePictureManager>().As<IProfilePictureService>().SingleInstance();
             builder.RegisterType<UserRateManager>().As<IUserRateService>().SingleInstance();
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();

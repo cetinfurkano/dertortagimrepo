@@ -8,10 +8,10 @@ namespace DertOrtagim.Entities.DTOs
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public byte[] ProfilePicture { get; set; }
+        //public byte[] ProfilePicture { get; set; }
         public string Text { get; set; }
         public int LikeCount { get; set; }
-        public int CommentCount { get; set; }
+        //public int CommentCount { get; set; }
         public DateTime Date { get; set; }
     }
 }

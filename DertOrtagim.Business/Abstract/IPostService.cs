@@ -11,5 +11,6 @@ namespace DertOrtagim.Business.Abstract
         IResult RemovePost(int postId);
         IDataResult<PostForReturnDto> GetPostById(int postId);
         IDataResult<List<PostForReturnDto>> GetPostByUserId(int userId);
+        IDataResult<List<PostForReturnDto>> GetAll();
     }
 }

@@ -15,11 +15,9 @@ namespace DertOrtagim.WebAPI.Controllers
     [ApiController]
     public class AuthsController : ControllerBase
     {
-        private readonly IUserService _userService;
         private readonly IAuthService _authService;
-        public AuthsController(IUserService userService, IAuthService authService)
+        public AuthsController(IAuthService authService)
         {
-            _userService = userService;
             _authService = authService;
         }
 
@@ -48,7 +46,7 @@ namespace DertOrtagim.WebAPI.Controllers
             var userExistsResult = _authService.UserExists(userForRegisterDto.EMail, userForRegisterDto.UserName);
             if (!userExistsResult.Success)
             {
-                return BadRequest(userExistsResult.Message);
+                return BadRequest(userExistsResult);
             }
 
             var registerResult = _authService.Register(userForRegisterDto, userForRegisterDto.Password);
@@ -57,12 +55,8 @@ namespace DertOrtagim.WebAPI.Controllers
                 return BadRequest(registerResult.Message);
             }
 
-            return Ok();
+            return Ok(registerResult.Success);
         }
-        [HttpGet]
-        public IActionResult Test()
-        {
-            return Ok("TEST");
-        }
+        
     }
 }

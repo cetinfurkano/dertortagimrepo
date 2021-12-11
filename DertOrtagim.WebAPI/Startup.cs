@@ -67,12 +67,12 @@ namespace DertOrtagim.WebAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseExceptionWrapperMiddleware();
+ 
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthentication();
 
             app.UseAuthorization();
 

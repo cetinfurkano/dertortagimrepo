@@ -8,5 +8,6 @@ namespace DertOrtagim.DataAccess.Concrete.EntityFramework
 {
     public class EfLikeDal : EfEntityRepositoryBase<Like, DertOrtagimDBContext>, ILikeDal
     {
+         
     }
 }
