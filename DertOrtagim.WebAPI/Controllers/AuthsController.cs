@@ -1,4 +1,6 @@
-﻿using Core.Utilities.Results.Abstract;
+﻿using Core.Constants;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using Core.Utilities.Security.Hashing;
 using DertOrtagim.Business.Abstract;
 using DertOrtagim.Entities.DTOs;
@@ -55,7 +57,7 @@ namespace DertOrtagim.WebAPI.Controllers
                 return BadRequest(registerResult.Message);
             }
 
-            return Ok(registerResult.Success);
+            return Ok(new SuccessResult(Messages.Success));
         }
         
     }
